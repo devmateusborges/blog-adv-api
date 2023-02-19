@@ -1,3 +1,4 @@
+import { Post_Group } from ".prisma/client";
 import { Request, Response } from "express";
 import { CreatePostGroupUseCase } from "./CreatePostGroupUseCase";
 
