@@ -3,13 +3,13 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.GetAllUsersUseCase = void 0;
+exports.GetAllGroupUseCase = void 0;
 var _client = require("../../../../prisma/client");
-class GetAllUsersUseCase {
+class GetAllGroupUseCase {
   async execute() {
-    const users = await _client.prisma.user.findMany({
+    const group = await _client.prisma.group.findMany({
       include: {
-        user_post: {
+        post_grupo: {
           select: {
             post: {
               select: {
@@ -20,7 +20,7 @@ class GetAllUsersUseCase {
         }
       }
     });
-    return users;
+    return group;
   }
 }
-exports.GetAllUsersUseCase = GetAllUsersUseCase;
+exports.GetAllGroupUseCase = GetAllGroupUseCase;

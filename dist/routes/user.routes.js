@@ -1,13 +1,18 @@
 "use strict";
-exports.__esModule = true;
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 exports.userRoutes = void 0;
-var express_1 = require("express");
-var CreateUserController_1 = require("../modules/users/useCases/createUser/CreateUserController");
-var GetAllUsersController_1 = require("../modules/users/useCases/getAllUsers/GetAllUsersController");
-var createUserController = new CreateUserController_1.CreateUserController();
-var getAllUsersController = new GetAllUsersController_1.GetAllUsersController();
-var userRoutes = (0, express_1.Router)();
+var _express = require("express");
+var _CreateUserController = require("../modules/users/useCases/createUser/CreateUserController");
+var _GetUserByEmailController = require("../modules/users/useCases/getAllUserByEmail/GetUserByEmailController");
+var _GetAllUsersController = require("../modules/users/useCases/getAllUsers/GetAllUsersController");
+const createUserController = new _CreateUserController.CreateUserController();
+const getAllUsersController = new _GetAllUsersController.GetAllUsersController();
+const getUserByEmailController = new _GetUserByEmailController.GetUserByEmailController();
+const userRoutes = (0, _express.Router)();
 exports.userRoutes = userRoutes;
 userRoutes.post("/", createUserController.handle);
 userRoutes.get("/", getAllUsersController.handle);
-//# sourceMappingURL=user.routes.js.map
+userRoutes.get("/:email", getUserByEmailController.handle);

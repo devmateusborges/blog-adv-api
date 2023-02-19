@@ -1,11 +1,19 @@
 "use strict";
-exports.__esModule = true;
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 exports.routes = void 0;
-var express_1 = require("express");
-var movie_routes_1 = require("./movie.routes");
-var user_routes_1 = require("./user.routes");
-var routes = (0, express_1.Router)();
+var _express = require("express");
+var _group = require("./group.routes");
+var _post = require("./post.routes");
+var _post_group = require("./post_group.routes");
+var _user = require("./user.routes");
+var _user_post = require("./user_post.routes");
+const routes = (0, _express.Router)();
 exports.routes = routes;
-routes.use("/users", user_routes_1.userRoutes);
-routes.use("/movies", movie_routes_1.movieRoutes);
-//# sourceMappingURL=index.js.map
+routes.use("/users", _user.userRoutes);
+routes.use("/posts", _post.postRoutes);
+routes.use("/groups", _group.groupRoutes);
+routes.use("/postgroups", _post_group.postGroupRoutes);
+routes.use("/userpost", _user_post.UserPostRoutes);
