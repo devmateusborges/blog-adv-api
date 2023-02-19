@@ -1,4 +1,4 @@
-import { Post } from "@prisma/client";
+import { Post } from ".prisma/client";
 import { prisma } from "../../../../prisma/client";
 
 export class GetPostByDateUseCase {
@@ -13,15 +13,6 @@ export class GetPostByDateUseCase {
         date_post: "asc",
       },
       include: {
-        user_post: {
-          select: {
-            user: {
-              select: {
-                name: true,
-              },
-            },
-          },
-        },
         post_grupo: {
           select: {
             group: {

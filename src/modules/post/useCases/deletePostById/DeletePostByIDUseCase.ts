@@ -1,4 +1,4 @@
-import { Post } from "@prisma/client";
+import { Post } from ".prisma/client";
 import { AppError } from "../../../../errors/AppError";
 import { prisma } from "../../../../prisma/client";
 import { CreatePostDTO } from "../../Dtos/CreatePostDTO";

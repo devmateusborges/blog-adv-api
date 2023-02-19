@@ -15,6 +15,9 @@ export class DeletePostByIDController {
       subtitle: "",
       date_post: "",
       url_photo: "",
+      Post_Group: {
+        groupId: "",
+      },
     });
 
     return res.status(201).send({
