@@ -1,0 +1,42 @@
+
+###
+@HOSTAPI=http://127.0.0.1:3333
+
+
+POST {{HOSTAPI}}/movies HTTP/1.1
+Content-Type: application/json
+
+{
+ "title": "teste4",
+ "duration": 554,
+ "release_date":"2023-01-23T22:58:59.513Z"
+}
+
+
+DELETE  {{HOSTAPI}}/post/1e79b847-2e48-410d-9b16-2bdaea0729ca HTTP/1.1
+
+
+### 
+
+
+
+POST {{HOSTAPI}}/posts/ HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "Direito Penal Com Grupo I",
+  "subtitle": "Direito penal I",
+  "subject": "O que é Direito Penal? Para vivermos em sociedade, mantendo a paz, a harmonia e o respeito a todas as formas de existir, precisamos ter regras e limites para os nossos atos, além de consequências, em casos de condutas inadequadas. Nesse sentido, cabe ao Direito Penal gerir os nossos atos, incluindo a punição e a aplicação das sanções para cada violação. A Constituição Federal é composta por leis que definem desde o funcionamento do nosso governo até a nossa convivência enquanto indivíduos pertencentes a uma mesma nação ou território. Desse modo, o Direito Penal pode ser definido por esse conjunto de leis, assim como a maneira de interpretá-las. Geralmente, o Direito Penal configura o crime como um fato e a pena como consequência. A partir desse pressuposto, seguimos para a definição de que ele configura os limites do poder punitivo do Estado. O direito penal é uma área jurídica responsável por atribuir penas aos delitos cometidos na sociedade, tendo como base as leis originadas do Poder Legislativo. Os princípios do direito penal dão suporte para a área e facilitam a compreensão de qualquer ramo do direito. Além disso, essa é uma das disciplinas cobradas na prova da OAB e em concursos policiais.",
+  "url_photo": "https://st.depositphotos.com/1000163/2482/i/600/depositphotos_24824379-stock-photo-handcuffs-and-judge-gavel-on.jpg",
+  "post_grupo": {
+      "gorupId":"e18f345d-bee2c95ad8d8-7dd1-4f66-988a"
+  }
+}
+
+### 
+
+GET {{HOSTAPI}}/posts/Ppage=1&pPer_page=10 HTTP/1.1
+Content-Type: application/json
+ 
+### 
+

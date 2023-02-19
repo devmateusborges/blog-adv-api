@@ -1,0 +1,33 @@
+@HOSTAPI=http://127.0.0.1:3333
+
+POST {{HOSTAPI}}/users HTTP/1.1
+Content-Type: application/json
+
+{
+"email":"mateus123@gmail.com",
+"name":"mateus321"
+}
+
+### 
+
+POST {{HOSTAPI}}/users/ HTTP/1.1
+Content-Type: application/json
+
+{
+"email":"mateus1@gmail.com",
+"name":"mateus321"
+}
+
+### 
+
+
+GET {{HOSTAPI}}/users/mateus1@gmail.com HTTP/1.1
+Content-Type: application/json
+ 
+### 
+
+
+GET {{HOSTAPI}}/users/ HTTP/1.1
+Content-Type: application/json
+ 
+### 

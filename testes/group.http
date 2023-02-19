@@ -1,0 +1,35 @@
+
+###
+@HOSTAPI=http://127.0.0.1:3333
+
+
+POST {{HOSTAPI}}/groups/ HTTP/1.1
+Content-Type: application/json
+
+{ 
+  "name_group":"GRUPO 2",
+  "description": "Grupo 1 responsavel XXXXX",
+  "color_hex": "#000"
+}
+
+#####
+DELETE  {{HOSTAPI}}/groups/1e79b847-2e48-410d-9b16-2bdaea0729ca HTTP/1.1
+
+ 
+### 
+
+GET {{HOSTAPI}}/groups/Ppage=1&pPer_page=10 HTTP/1.1
+Content-Type: application/json
+ 
+### 
+
+
+
+
+
+GET {{HOSTAPI}}/users/mateus1@gmail.com HTTP/1.1
+Content-Type: application/json
+ 
+
+
+### 

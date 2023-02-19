@@ -1,0 +1,87 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+//===============
+// Usuario
+//===============
+
+model User {
+  id           String       @id @default(uuid())
+  email        String       @unique
+  name         String
+  created_at   DateTime     @default(now())
+  updated_at   DateTime     @updatedAt
+  user_post    User_Post[]  @relation("user")
+
+
+  @@map("user")
+}
+
+//===============
+// POST
+//===============
+
+model Post {
+  id           String         @id @default(uuid())
+  title        String         @unique
+  subtitle     String
+  subject      String
+  url_photo    String
+  date_post    DateTime       @default(now())
+  post_grupo   Post_Group[]   @relation("post")
+  user_post    User_Post[]    @relation("post")
+
+  @@map("post")
+}
+
+//===============
+// Group
+//===============
+
+model Group {
+  id              String        @unique     @id @default(uuid())
+  name_group      String        @unique 
+  description     String
+  color_hex       String
+  created_at      DateTime      @default(now())
+  updated_at      DateTime      @updatedAt
+  post_grupo      Post_Group[]  @relation("group")
+
+  @@map("group")
+}
+//===============
+// Relacionamento POST GRUPO POST USUARIO
+//===============
+
+model Post_Group {
+  id       String  @unique   @id @default(uuid())
+  group    Group   @relation("group", fields: [groupId], references: [id])
+  groupId  String  
+  post     Post    @relation("post", fields: [postId], references: [id])
+  postId   String  @unique
+
+ 
+  @@map("post_group")
+}
+//===============
+// Relacionamento POST USER POST USUARIO
+//===============
+
+model User_Post {
+  id      String    @id @default(uuid())
+  user    User      @relation("user", fields: [userId], references: [id])
+  userId  String    
+  post    Post      @relation("post", fields: [postId], references: [id])
+  postId  String    @unique
+
+  @@map("user_post")
+}
