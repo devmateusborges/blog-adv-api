@@ -3,9 +3,9 @@ import { prisma } from "../../../../prisma/client";
 import { CreateGroupDTO } from "../../Dtos/CreateGroupDTO";
 
 export class DeleteGroupByIDUseCase {
-  async execute(id: CreateGroupDTO): Promise<void> {
+  async execute(id: any): Promise<void> {
     const groupAlreadyExists = await prisma.group.delete({
-      where: id,
+      where: { id: id },
     });
 
     if (!groupAlreadyExists) {

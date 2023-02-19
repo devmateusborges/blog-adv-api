@@ -48,7 +48,7 @@ model Post {
 //===============
 
 model Group {
-  id              String        @unique     @id @default(uuid())
+  id              String            @id @default(uuid())
   name_group      String        @unique 
   description     String
   color_hex       String

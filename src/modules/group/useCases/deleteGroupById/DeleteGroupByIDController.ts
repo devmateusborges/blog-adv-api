@@ -6,12 +6,7 @@ export class DeleteGroupByIDController {
     const { id } = req.params;
     const deleteGroupByIDUseCase = new DeleteGroupByIDUseCase();
 
-    const result = await deleteGroupByIDUseCase.execute({
-      id,
-      name_group: "",
-      description: "",
-      color_hex: "",
-    });
+    const result = await deleteGroupByIDUseCase.execute(id);
 
     return res.status(201).send({
       Menssage: "Sucess",
