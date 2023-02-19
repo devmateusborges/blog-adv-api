@@ -1,4 +1,4 @@
-import { Post_Group } from "@prisma/client";
+import { Post_Group } from ".prisma/client";
 import { AppError } from "../../../../errors/AppError";
 import { prisma } from "../../../../prisma/client";
 import { CreatePostGroupDTO } from "../../Dtos/CreateGroupDTO";

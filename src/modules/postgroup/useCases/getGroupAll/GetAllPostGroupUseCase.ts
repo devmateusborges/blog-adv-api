@@ -1,4 +1,4 @@
-import { Group, Post_Group } from "@prisma/client";
+import { Group, Post_Group } from ".prisma/client";
 import { prisma } from "../../../../prisma/client";
 
 export class GetAllPostGroupUseCase {
