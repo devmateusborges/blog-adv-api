@@ -13,7 +13,7 @@ Content-Type: application/json
 }
 
 #####
-DELETE  {{HOSTAPI}}/groups/1e79b847-2e48-410d-9b16-2bdaea0729ca HTTP/1.1
+DELETE  {{HOSTAPI}}/groups/9df99884-7451-4be6-941e-192915e17111 HTTP/1.1
 
  
 ### 
