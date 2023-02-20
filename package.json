@@ -6,7 +6,7 @@
   "scripts": {
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files",
     "dev": "ts-node-dev  --transpile-only --ignore-watch node_modules src/index.ts",
-    "start": "prisma generate  && ts-node --transpile-only ./src/index.ts",
+    "start": "ts-node --transpile-only ./src/index.ts",
     "teste": "ts-node --transpile-only ./src/index.ts"
   },
   "dependencies": {
