@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { CreatePostGroupController } from "../modules/PostGroup/useCases/createPostGroup/CreatePostGroupController";
+import { CreatePostGroupController } from "../modules/post/useCases/createPostGroup/CreatePostGroupController";
 import { DeletePostGroupByIDController } from "../modules/postgroup/useCases/deletePostGroupById/DeleteGroupByIDController";
 import { GetAllPostGroupController } from "../modules/postgroup/useCases/getGroupAll/GetAllPostGroupController";
 
