@@ -20,7 +20,11 @@ model User {
   name         String
   created_at   DateTime     @default(now())
   updated_at   DateTime     @updatedAt
-
+  password  String
+  type         String
+  posts         Post[]   @relation("user")
+  groups        Group[]   @relation("group_user")
+  logs          Logs[]      @relation("logs_user")
 
 
   @@map("user")
@@ -29,7 +33,6 @@ model User {
 //===============
 // POST
 //===============
-
 model Post {
   id           String        @unique @id @default(uuid())
   title        String         @unique
@@ -38,6 +41,8 @@ model Post {
   url_photo    String
   date_post    DateTime       @default(now())
   post_grupo   Post_Group[]   @relation("post")
+  user    User   @relation("user", fields: [user_id], references: [id])
+  user_id String
 
 
   @@map("post")
@@ -48,13 +53,16 @@ model Post {
 //===============
 
 model Group {
-  id              String            @id @default(uuid())
+  id              String     @unique   @id @default(uuid())
   name_group      String        @unique 
   description     String
   color_hex       String
+  post_grupo      Post_Group[]  @relation("group")
+  user            User          @relation("group_user", fields: [user_id], references: [id])
+  user_id String
+
   created_at      DateTime      @default(now())
   updated_at      DateTime      @updatedAt
-  post_grupo      Post_Group[]  @relation("group")
 
   @@map("group")
 }
@@ -73,6 +81,16 @@ model Post_Group {
   @@map("post_group")
 }
 //===============
-// Relacionamento POST USER POST USUARIO
+// LOG
 //===============
 
+model Logs {
+  id       String  @unique   @id @default(uuid())
+  method   String
+  date     DateTime @default(now())
+  user     User   @relation("logs_user", fields: [userId], references: [id])
+  userId    String
+  table_name String
+
+  @@map("logs")
+}

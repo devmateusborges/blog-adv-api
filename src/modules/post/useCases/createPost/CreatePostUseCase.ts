@@ -11,6 +11,7 @@ export class CreatePostUseCase {
     subject,
     url_photo,
     date_post,
+    user_id,
   }: CreatePostDTO): Promise<Post> {
     // Verificar se Post
     const postAlreadyExists = await prisma.post.findUnique({
@@ -31,6 +32,7 @@ export class CreatePostUseCase {
         subject,
         url_photo,
         date_post,
+        user_id,
       },
     });
 

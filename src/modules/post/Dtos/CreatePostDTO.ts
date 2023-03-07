@@ -4,8 +4,9 @@ export interface CreatePostDTO {
   subtitle: string;
   subject: string;
   url_photo: string;
-  date_post: string;
-  Post_Group: {
+  date_post?: string;
+  user_id: string;
+  Post_Group?: {
     groupId: string;
   };
 }

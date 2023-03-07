@@ -4,9 +4,9 @@ import { prisma } from "../../../../prisma/client";
 import { CreatePostDTO } from "../../Dtos/CreatePostDTO";
 
 export class DeletePostByIDUseCase {
-  async execute(id: CreatePostDTO): Promise<void> {
+  async execute(id: string): Promise<void> {
     const postAlreadyExists = await prisma.post.delete({
-      where: id,
+      where: { id: id },
     });
 
     if (!postAlreadyExists) {

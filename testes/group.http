@@ -7,22 +7,34 @@ POST {{HOSTAPI}}/groups/ HTTP/1.1
 Content-Type: application/json
 
 { 
-  "name_group":"GRUPO 55",
-  "description": "Grupo 1 responsavel XXXXX",
-  "color_hex": "#000"
+  "name_group":"Leo",
+  "description": "Grupo 2 Teste",
+  "color_hex": "#000",
+  "user_id":"1a09ddde-bdd1-4bac-9c15-1ca5ba6a74e4"
 }
 
 #####
-DELETE  {{HOSTAPI}}/groups/9df99884-7451-4be6-941e-192915e17111 HTTP/1.1
+DELETE  {{HOSTAPI}}/groups/b289047e-c578-4b34-96b7-c17114f9cb72 HTTP/1.1
 
  
 ### 
 
-GET {{HOSTAPI}}/groups/Ppage=1&pPer_page=10 HTTP/1.1
+GET {{HOSTAPI}}/groups/ HTTP/1.1
 Content-Type: application/json
  
 ### 
 
+
+### 
+
+POST {{HOSTAPI}}/groups/filter HTTP/1.1
+Content-Type: application/json
+
+{
+  "filter":"%%"
+}
+ 
+### 
 
 
 
@@ -33,3 +45,22 @@ Content-Type: application/json
 
 
 ### 
+
+
+#####
+GET {{HOSTAPI}}/groups/f20f9d55-ed82-4d5f-998d-488e9694afc2 HTTP/1.1
+Content-Type: application/json
+ 
+###
+
+
+PUT {{HOSTAPI}}/groups/update/1a771a38-8892-4a62-8db5-a845bd586496 HTTP/1.1
+Content-Type: application/json
+
+{ 
+  "name_group":"GRUPO 1",
+  "description": "Grupo 1 responsavel XXXXX",
+  "color_hex": "#000",
+  "user_id":"c39fbf89-fe37-431d-be1a-623115d796ff"
+}
+###

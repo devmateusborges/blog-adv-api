@@ -8,6 +8,7 @@ export class CreateGroupUseCase {
     name_group,
     description,
     color_hex,
+    user_id,
   }: CreateGroupDTO): Promise<Group> {
     // Verificar se Post
     const groupAlreadyExists = await prisma.group.findUnique({
@@ -26,6 +27,7 @@ export class CreateGroupUseCase {
         name_group,
         description,
         color_hex,
+        user_id,
       },
     });
 

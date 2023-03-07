@@ -6,19 +6,7 @@ export class DeletePostByIDController {
     const { id } = req.params;
     const deletePostByIDUseCase = new DeletePostByIDUseCase();
 
-    console.log(id);
-    console.log(typeof id);
-    const result = await deletePostByIDUseCase.execute({
-      id,
-      title: "",
-      subject: "",
-      subtitle: "",
-      date_post: "",
-      url_photo: "",
-      Post_Group: {
-        groupId: "",
-      },
-    });
+    const result = await deletePostByIDUseCase.execute(id);
 
     return res.status(201).send({
       Menssage: "Sucess",

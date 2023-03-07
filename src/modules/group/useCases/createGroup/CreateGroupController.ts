@@ -3,7 +3,7 @@ import { CreateGroupUseCase } from "./CreateGroupUseCase";
 
 export class CreateGroupController {
   async handle(req: Request, res: Response) {
-    const { name_group, description, color_hex } = req.body;
+    const { name_group, description, color_hex, user_id } = req.body;
 
     const createGroupUseCase = new CreateGroupUseCase();
 
@@ -11,6 +11,7 @@ export class CreateGroupController {
       name_group,
       description,
       color_hex,
+      user_id,
     });
 
     return res.status(201).json(result);
