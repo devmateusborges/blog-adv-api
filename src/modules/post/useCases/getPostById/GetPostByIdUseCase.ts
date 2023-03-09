@@ -6,15 +6,8 @@ export class GetPostByIdUseCase {
     const post = await prisma.post.findMany({
       where: { id: id },
       include: {
-        post_grupo: {
-          select: {
-            post: {
-              select: {
-                title: true,
-              },
-            },
-          },
-        },
+        group: { select: { name_group: true, description: true } },
+        user: { select: { email: true, name: true } },
       },
     });
 
