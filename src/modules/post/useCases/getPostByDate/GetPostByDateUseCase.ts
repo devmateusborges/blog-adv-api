@@ -8,14 +8,10 @@ export class GetPostByDateUseCase {
         date_post: "asc",
       },
       include: {
-        post_grupo: {
+        group: {
           select: {
-            group: {
-              select: {
-                name_group: true,
-                description: true,
-              },
-            },
+            name_group: true,
+            description: true,
           },
         },
         user: {

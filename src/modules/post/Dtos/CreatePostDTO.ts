@@ -6,7 +6,5 @@ export interface CreatePostDTO {
   url_photo: string;
   date_post?: string;
   user_id: string;
-  Post_Group?: {
-    groupId: string;
-  };
+  group_id: string;
 }

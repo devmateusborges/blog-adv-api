@@ -10,7 +10,9 @@ export class UpdatePostUseCase {
     title,
     subtitle,
     subject,
+    user_id,
     url_photo,
+    group_id,
   }: CreatePostDTO): Promise<Post> {
     // Criar Post
     const post = await prisma.post.update({
@@ -22,6 +24,8 @@ export class UpdatePostUseCase {
         subtitle,
         subject,
         url_photo,
+        user_id,
+        group_id,
       },
     });
 

@@ -22,8 +22,8 @@ model User {
   updated_at   DateTime     @updatedAt
   password  String
   type         String
-  posts         Post[]   @relation("user")
-  groups        Group[]   @relation("group_user")
+  posts         Post[]      @relation("user")
+  groups        Group[]     @relation("group_user")
   logs          Logs[]      @relation("logs_user")
 
 
@@ -31,55 +31,43 @@ model User {
 }
 
 //===============
-// POST
-//===============
-model Post {
-  id           String        @unique @id @default(uuid())
-  title        String         @unique
-  subtitle     String
-  subject      String
-  url_photo    String
-  date_post    DateTime       @default(now())
-  post_grupo   Post_Group[]   @relation("post")
-  user    User   @relation("user", fields: [user_id], references: [id])
-  user_id String
-
-
-  @@map("post")
-}
-
-//===============
 // Group
 //===============
 
 model Group {
-  id              String     @unique   @id @default(uuid())
+  id              String        @unique   @id @default(uuid())
   name_group      String        @unique 
   description     String
   color_hex       String
-  post_grupo      Post_Group[]  @relation("group")
   user            User          @relation("group_user", fields: [user_id], references: [id])
-  user_id String
-
+  user_id         String
+  post            Post[]        @relation("group_post")
   created_at      DateTime      @default(now())
   updated_at      DateTime      @updatedAt
 
   @@map("group")
 }
-//===============
-// Relacionamento POST GRUPO POST USUARIO
-//===============
 
-model Post_Group {
-  id       String  @unique   @id @default(uuid())
-  group    Group   @relation("group", fields: [groupId], references: [id])
-  groupId  String  
-  post     Post    @relation("post", fields: [postId], references: [id])
-  postId   String  @unique
+//===============
+// POST
+//===============
+model Post {
+  id           String       @unique @id @default(uuid())
+  title        String       @unique
+  subtitle     String
+  subject      String
+  url_photo    String
+  date_post    DateTime    @default(now())
+  group        Group       @relation("group_post", fields: [group_id], references: [id])
+  group_id     String
+  user         User        @relation("user", fields: [user_id], references: [id])
+  user_id      String
 
- 
-  @@map("post_group")
+
+  @@map("post")
 }
+
+
 //===============
 // LOG
 //===============
