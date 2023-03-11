@@ -7,10 +7,10 @@ POST {{HOSTAPI}}/groups/ HTTP/1.1
 Content-Type: application/json
 
 { 
-  "name_group":"teste 1",
-  "description": "Grupo 1 Teste",
+  "name_group":"Codigo Penal",
+  "description": "esse grupo foi criado para os codigos Penal",
   "color_hex": "#000",
-  "user_id":"f2e01790-74c1-421b-baa1-7f1d726d94c2"
+  "user_id":"2ffbc5e8-230a-4f66-a3a5-b3e37520e893"
 }
 
 #####

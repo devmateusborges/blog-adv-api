@@ -7,20 +7,6 @@ export class GetPostByDateUseCase {
       orderBy: {
         date_post: "desc",
       },
-      include: {
-        group: {
-          select: {
-            name_group: true,
-            description: true,
-          },
-        },
-        user: {
-          select: {
-            name: true,
-            email: true,
-          },
-        },
-      },
     });
 
     return posts;
