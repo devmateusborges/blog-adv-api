@@ -5,7 +5,7 @@ export class GetPostByDateUseCase {
   async execute(): Promise<Post[]> {
     const posts = await prisma.post.findMany({
       orderBy: {
-        date_post: "asc",
+        date_post: "desc",
       },
       include: {
         group: {
