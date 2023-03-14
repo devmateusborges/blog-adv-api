@@ -1,4 +1,4 @@
-import { Group } from ".prisma/client";
+import { Group } from "@prisma/client";
 
 import { prisma } from "../../../../prisma/client";
 
@@ -13,6 +13,7 @@ export class GetAllGroupUseCase {
           select: {
             id: true,
             title: true,
+            subtitle: true,
           },
         },
       },
