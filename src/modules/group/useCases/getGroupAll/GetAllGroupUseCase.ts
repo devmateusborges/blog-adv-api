@@ -13,14 +13,6 @@ export class GetAllGroupUseCase {
           select: {
             id: true,
             title: true,
-            subtitle: true,
-            subject: true,
-          },
-        },
-        user: {
-          select: {
-            name: true,
-            email: true,
           },
         },
       },
