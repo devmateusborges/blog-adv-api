@@ -9,7 +9,7 @@ export class GetAllGroupUseCase {
         created_at: "asc",
       },
       select: {
-        post: true,
+        _count: true,
       },
     });
 
