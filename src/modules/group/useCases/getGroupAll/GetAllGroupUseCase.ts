@@ -11,6 +11,7 @@ export class GetAllGroupUseCase {
       include: {
         post: {
           select: {
+            id: true,
             title: true,
             subtitle: true,
             subject: true,
