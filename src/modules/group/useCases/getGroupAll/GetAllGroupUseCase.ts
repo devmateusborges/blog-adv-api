@@ -9,13 +9,7 @@ export class GetAllGroupUseCase {
         created_at: "asc",
       },
       include: {
-        post: {
-          select: {
-            id: true,
-            title: true,
-            subtitle: true,
-          },
-        },
+        post: true,
       },
     });
 
