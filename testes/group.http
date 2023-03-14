@@ -8,9 +8,9 @@ Content-Type: application/json
 
 { 
   "name_group":"Codigo Penal",
-  "description": "esse grupo foi criado para os codigos Penal",
+  "description": "Esse grupo foi criado para os codigos Penal",
   "color_hex": "#000",
-  "user_id":"2ffbc5e8-230a-4f66-a3a5-b3e37520e893"
+  "user_id":"4618e8c2-ee25-4257-bb6a-91310238bfd3"
 }
 
 #####
