@@ -8,14 +8,6 @@ export class GetAllGroupUseCase {
       orderBy: {
         created_at: "asc",
       },
-      include: {
-        post: {
-          select: {
-            id: true,
-            title: true,
-          },
-        },
-      },
     });
 
     return query2;
