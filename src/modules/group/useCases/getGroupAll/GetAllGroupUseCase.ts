@@ -1,4 +1,4 @@
-import { Group } from "@prisma/client";
+import { Group, Post } from "@prisma/client";
 
 import { prisma } from "../../../../prisma/client";
 
