@@ -1,15 +1,24 @@
 import { Router } from "express";
-import { CreateUserController } from "../modules/users/useCases/createUser/CreateUserController";
-import { GetUserByEmailController } from "../modules/users/useCases/getAllUserByEmail/GetUserByEmailController";
-import { GetAllUsersController } from "../modules/users/useCases/getAllUsers/GetAllUsersController";
+import { UserController } from "../modules/users/useCases/UserController";
 
-const createUserController = new CreateUserController();
-const getAllUsersController = new GetAllUsersController();
-const getUserByEmailController = new GetUserByEmailController();
+const userController = new UserController();
+
 const userRoutes = Router();
 
-userRoutes.post("/", createUserController.handle);
-userRoutes.get("/", getAllUsersController.handle);
-userRoutes.get("/:email", getUserByEmailController.handle);
+userRoutes.post("/", userController.createUser);
+userRoutes.put(
+  "/update/:id",
+  userController.authenticate,
+  userController.updateUser
+);
+userRoutes.delete("/", userController.authenticate, userController.deleteUser);
+userRoutes.get("/", userController.getUserAll);
+
+userRoutes.get(
+  "/:email",
+  userController.authenticate,
+  userController.getUserByEmail
+);
+userRoutes.post("/auth", userController.createToken);
 
 export { userRoutes };

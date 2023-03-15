@@ -1,4 +1,4 @@
-export interface CreatePostDTO {
+export interface PostDTO {
   id?: string;
   title: string;
   subtitle: string;

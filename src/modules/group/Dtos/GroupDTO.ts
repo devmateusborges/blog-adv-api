@@ -1,4 +1,4 @@
-export interface CreateGroupDTO {
+export interface GroupDTO {
   id?: string;
   id_group_1?: string;
   name_group: string;

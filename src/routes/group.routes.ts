@@ -1,24 +1,29 @@
 import { Router } from "express";
-import { CreateGroupController } from "../modules/group/useCases/createGroup/CreateGroupController";
-import { DeleteGroupByIDController } from "../modules/group/useCases/deleteGroupById/DeleteGroupByIDController";
-import { GetFilterGroupController } from "../modules/group/useCases/getByFilter/GetFilterGroupController";
-import { GetAllGroupController } from "../modules/group/useCases/getGroupAll/GetAllGroupController";
-import { GetGroupByIdController } from "../modules/group/useCases/getGroupById/GetGroupByIdController";
-import { UpdateGroupController } from "../modules/group/useCases/updateGroup/UpdateGroupController";
+import { GroupController } from "../modules/group/useCases/GroupController";
+import { UserController } from "../modules/users/useCases/UserController";
 
-const createGroupController = new CreateGroupController();
-const deleteGroupByIDController = new DeleteGroupByIDController();
-const getAllGroupController = new GetAllGroupController();
-const getGroupByIdController = new GetGroupByIdController();
-const updateGroupController = new UpdateGroupController();
-const getFilterGroupController = new GetFilterGroupController();
-
+const groupController = new GroupController();
+const userController = new UserController();
 const groupRoutes = Router();
 
-groupRoutes.post("/", createGroupController.handle);
-groupRoutes.delete("/:id", deleteGroupByIDController.handle);
-groupRoutes.get("/", getAllGroupController.handle);
-groupRoutes.post("/filter", getFilterGroupController.handle);
-groupRoutes.get("/:id", getGroupByIdController.handle);
-groupRoutes.put("/update/:id", updateGroupController.handle);
+groupRoutes.post("/", userController.authenticate, groupController.createGroup);
+groupRoutes.get("/", groupController.getGroupAll);
+groupRoutes.put(
+  "/update/:id",
+  userController.authenticate,
+  groupController.updateGroup
+);
+groupRoutes.delete(
+  "/:id",
+  userController.authenticate,
+  groupController.deleteGroup
+);
+
+groupRoutes.get("/:id", groupController.getGroupById);
+groupRoutes.post(
+  "/filter",
+  userController.authenticate,
+  groupController.getGroupFilter
+);
+
 export { groupRoutes };

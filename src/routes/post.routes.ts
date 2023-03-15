@@ -1,24 +1,24 @@
 import { Router } from "express";
-import { CreatePostController } from "../modules/post/useCases/createPost/CreatePostController";
-import { DeletePostByIDController } from "../modules/post/useCases/deletePostById/DeletePostByIDController";
-import { GetFilterPostController } from "../modules/post/useCases/getByFilter/GetFilterPostController";
-import { GetPostByDateController } from "../modules/post/useCases/getPostByDate/GetPostByDateController";
-import { GetPostByIdController } from "../modules/post/useCases/getPostById/GetPostByIdController";
-import { UpdatePostController } from "../modules/post/useCases/updatePost/UpdatePostController";
+import { PostController } from "../modules/post/useCases/PostController";
+import { UserController } from "../modules/users/useCases/UserController";
 
-const createPostController = new CreatePostController();
-const getPostByDateController = new GetPostByDateController();
-const deletePostByIDController = new DeletePostByIDController();
-const getPostByIdController = new GetPostByIdController();
-const updatePostController = new UpdatePostController();
-const getFilterPostController = new GetFilterPostController();
+const postController = new PostController();
+const userController = new UserController();
 const postRoutes = Router();
 
-postRoutes.post("/", createPostController.handle);
-postRoutes.get("/", getPostByDateController.handle);
-postRoutes.post("/filter", getFilterPostController.handle);
-postRoutes.get("/:id", getPostByIdController.handle);
-postRoutes.delete("/update/:id", updatePostController.handle);
-postRoutes.delete("/:id", deletePostByIDController.handle);
+postRoutes.post("/", userController.authenticate, postController.createPost);
+postRoutes.put(
+  "/update/:id",
+  userController.authenticate,
+  postController.updatePost
+);
+postRoutes.delete(
+  "/:id",
+  userController.authenticate,
+  postController.deletePost
+);
+postRoutes.get("/", postController.getPostAllOrderDate);
+postRoutes.post("/filter", postController.getPostFilter);
+postRoutes.get("/:id", postController.getPostById);
 
 export { postRoutes };
