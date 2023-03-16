@@ -65,11 +65,7 @@ export class PostUseCase {
   }
 
   async getPostOrderDate(): Promise<Post[]> {
-    const posts = await prisma.post.findMany({
-      orderBy: {
-        created_at: "desc",
-      },
-    });
+    const posts = await prisma.post.findMany({});
 
     return posts;
   }
