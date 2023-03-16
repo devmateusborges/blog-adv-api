@@ -3,15 +3,7 @@ import { PostUseCase } from "./PostUseCase";
 
 export class PostController {
   async createPost(req: Request, res: Response) {
-    const {
-      title,
-      subject,
-      subtitle,
-      url_photo,
-      date_post,
-      user_id,
-      group_id,
-    } = req.body;
+    const { title, subject, subtitle, url_photo, user_id, group_id } = req.body;
 
     const postUseCase = new PostUseCase();
 
@@ -20,7 +12,6 @@ export class PostController {
       subject,
       subtitle,
       url_photo,
-      date_post,
       user_id,
       group_id,
     });

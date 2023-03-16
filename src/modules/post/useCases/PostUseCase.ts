@@ -10,7 +10,6 @@ export class PostUseCase {
     subtitle,
     subject,
     url_photo,
-    date_post,
     user_id,
     group_id,
   }: PostDTO): Promise<Post> {
@@ -31,7 +30,6 @@ export class PostUseCase {
         subtitle,
         subject,
         url_photo,
-        date_post,
         user_id,
         group_id,
       },
@@ -69,7 +67,7 @@ export class PostUseCase {
   async getPostOrderDate(): Promise<Post[]> {
     const posts = await prisma.post.findMany({
       orderBy: {
-        date_post: "desc",
+        created_at: "desc",
       },
     });
 
