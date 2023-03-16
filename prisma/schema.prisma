@@ -67,6 +67,7 @@ model Post {
   subtitle     String
   subject      String
   url_photo    String
+  date_post    DateTime     @default(now())
   group        Group       @relation("group_post", fields: [group_id], references: [id])
   group_id     String
   user         User        @relation("user", fields: [user_id], references: [id])
