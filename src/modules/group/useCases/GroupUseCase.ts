@@ -69,7 +69,7 @@ export class GroupUseCase {
     const post: any[] | PromiseLike<any[]> = [];
 
     let id: string | undefined;
-    query1.map((group: GroupDTO) => {
+    query1.map((group: any) => {
       post.push({
         id: group.id,
         title: group.title,
@@ -78,7 +78,7 @@ export class GroupUseCase {
       });
     });
 
-    query1.map((group: GroupDTO) => {
+    query1.map((group: any) => {
       if (group.id_group_1 != id) {
         res.push({
           id: group.id_group_1,
