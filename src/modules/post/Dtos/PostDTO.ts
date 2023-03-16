@@ -4,7 +4,7 @@ export interface PostDTO {
   subtitle: string;
   subject: string;
   url_photo: string;
-  date_post?: string;
   user_id: string;
   group_id: string;
+  created_at?: string;
 }

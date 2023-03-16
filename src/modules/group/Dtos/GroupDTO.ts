@@ -9,6 +9,7 @@ export interface GroupDTO {
   title?: string;
   subtitle?: string;
   group_id?: string;
+  created_at?: string;
 }
 
 export interface PostDTO {
