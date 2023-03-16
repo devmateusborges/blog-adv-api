@@ -108,6 +108,30 @@ export class UserUseCase {
 
     const token = userService.GenerateToken(user);
 
+    const tokenVery = await prisma.tokenReflash.findUnique({
+      where: {
+        user_id: user.id,
+      },
+    });
+    if (tokenVery?.user_id == user.id) {
+      const result = await prisma.tokenReflash.update({
+        where: {
+          user_id: user.id,
+        },
+        data: {
+          token: String(await token),
+          user_id: user.id,
+        },
+      });
+    } else {
+      const result = await prisma.tokenReflash.create({
+        data: {
+          token: String(await token),
+          user_id: user.id,
+        },
+      });
+    }
+
     return token;
   }
 

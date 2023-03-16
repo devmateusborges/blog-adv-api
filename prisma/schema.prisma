@@ -18,17 +18,27 @@ model User {
   id           String       @id @default(uuid())
   email        String       @unique
   name         String
+  password     String
+  type         String
   created_at   DateTime     @default(now())
   updated_at   DateTime     @updatedAt
-  password  String
-  type         String
   posts         Post[]      @relation("user")
   groups        Group[]     @relation("group_user")
   logs          Logs[]      @relation("logs_user")
-
-
+  token          TokenReflash[]      @relation("user_token")
   @@map("user")
 }
+
+model TokenReflash {
+  id           String       @id @default(uuid())
+  token        String
+  user         User        @relation("user_token", fields: [user_id], references: [id])
+  user_id      String       @unique
+  created_at   DateTime     @default(now())
+  updated_at   DateTime     @updatedAt
+  @@map("token_reflash")
+}
+
 
 //===============
 // Group
@@ -57,11 +67,12 @@ model Post {
   subtitle     String
   subject      String
   url_photo    String
-  date_post    DateTime    @default(now())
   group        Group       @relation("group_post", fields: [group_id], references: [id])
   group_id     String
   user         User        @relation("user", fields: [user_id], references: [id])
   user_id      String
+  created_at   DateTime     @default(now())
+  updated_at   DateTime     @updatedAt
 
 
   @@map("post")
@@ -75,10 +86,10 @@ model Post {
 model Logs {
   id       String  @unique   @id @default(uuid())
   method   String
-  date     DateTime @default(now())
-  user     User   @relation("logs_user", fields: [userId], references: [id])
-  userId    String
+  user     User   @relation("logs_user", fields: [user_id], references: [id])
+  user_id    String 
   table_name String
+  created_at   DateTime     @default(now())
 
   @@map("logs")
 }

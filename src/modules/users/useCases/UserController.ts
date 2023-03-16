@@ -8,6 +8,7 @@ export class UserController {
     const { id, name, email, type, password } = req.body;
 
     const createUserUseCase = new UserUseCase();
+    const getUserByEmailUseCase = new UserUseCase();
 
     const result = await createUserUseCase.createUser({
       id,
@@ -16,6 +17,8 @@ export class UserController {
       type,
       password,
     });
+
+    const rest = await getUserByEmailUseCase.createToken(email, password);
 
     return res.status(201).json({ status: 201, items: result });
   }
@@ -64,10 +67,9 @@ export class UserController {
     try {
       const decoded: any = jwt.verify(token, process.env.JWT_SECRET!);
       //Codigo abaixo vai na tabela e ve se existe esse usuario
-      const result = userUseCase.authenticateToken(decoded.id);
-      result.then((res) => {
-        return res.id;
-      }) == decoded.id;
+      const result = await userUseCase.authenticateToken(decoded.id);
+
+      result.id == decoded.id;
       next();
     } catch {
       res.status(401).json({ message: "Unauthorized" });

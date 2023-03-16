@@ -10,7 +10,6 @@ export class GroupUseCase {
     color_hex,
     user_id,
   }: GroupDTO): Promise<Group> {
-    // Verificar se Post
     const groupAlreadyExists = await prisma.group.findUnique({
       where: {
         name_group,
@@ -20,8 +19,16 @@ export class GroupUseCase {
     if (groupAlreadyExists) {
       throw new AppError("Group already exists!");
     }
+    const user = await prisma.user.findMany({
+      where: {
+        id: user_id,
+      },
+    });
 
-    // Criar Post
+    if (!user) {
+      throw new AppError("user is not exists!");
+    }
+
     const group = await prisma.group.create({
       data: {
         name_group,
