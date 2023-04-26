@@ -1,0 +1,17 @@
+@HOSTAPI=http://127.0.0.1:3333
+
+###
+POST {{HOSTAPI}}/chat/gpt HTTP/1.1
+Content-Type: application/json
+
+{ 
+"questionAmount" : "2", 
+"level":"easy",
+"subject":"matematica", 
+"alternativeAmount":"2"
+}
+###
+#   questionAmount: "5" | "10" | "15";
+#   level: "easy" | "medium" | "hard";
+#   subject: string;
+#   alternativeAmount: "2" | "4" | "5";

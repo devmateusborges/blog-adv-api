@@ -22,75 +22,54 @@ model User {
   type         String
   created_at   DateTime     @default(now())
   updated_at   DateTime     @updatedAt
-  posts         Post[]      @relation("user")
-  groups        Group[]     @relation("group_user")
-  logs          Logs[]      @relation("logs_user")
-  token          TokenReflash[]      @relation("user_token")
-  @@map("user")
+ // posts         Post[]      @relation("user")
+
+
+  @@map("sys_user")
 }
 
-model TokenReflash {
-  id           String       @id @default(uuid())
-  token        String
-  user         User        @relation("user_token", fields: [user_id], references: [id])
-  user_id      String       @unique
-  created_at   DateTime     @default(now())
-  updated_at   DateTime     @updatedAt
-  @@map("token_reflash")
+model Client {
+  id          String     @id @default(uuid())
+  firstName   String
+  surName     String
+  email       String    @unique
+  phone       String
+  address     String
+  owing       Float
+  paid        Float
+  created_at  DateTime  @default(now())
+  updated_at  DateTime?
+
+  @@map("clients")
 }
 
+model Products {
+  id          String     @id @default(uuid())
+  name        String
+  describe    String
+  price       Float
+  kg          Float
+  stock       Int
+  image       String?
+  created_at  DateTime  @default(now())
+  updated_at  DateTime  @updatedAt
 
-//===============
-// Group
-//===============
-
-model Group {
-  id              String        @unique   @id @default(uuid())
-  name_group      String        @unique 
-  description     String
-  color_hex       String
-  user            User          @relation("group_user", fields: [user_id], references: [id])
-  user_id         String
-  post            Post[]        @relation("group_post")
-  created_at      DateTime      @default(now())
-  updated_at      DateTime      @updatedAt
-
-  @@map("group")
+   @@map("products")
 }
 
-//===============
-// POST
-//===============
-model Post {
-  id           String       @unique @id @default(uuid())
-  title        String       @unique
-  subtitle     String
-  subject      String
-  url_photo    String
-  date_post    DateTime     @default(now())
-  group        Group       @relation("group_post", fields: [group_id], references: [id])
-  group_id     String
-  user         User        @relation("user", fields: [user_id], references: [id])
-  user_id      String
-  created_at   DateTime     @default(now())
-  updated_at   DateTime     @updatedAt
+model order {
+  id             String     @id @default(uuid())
+  clientID       String
+  productID      String
+  amount         Int
+  description    String
+  priceOne       Float
+  totalPrice     Float
+  deliveryDate   DateTime
+  paymentDate    DateTime
+  active         Boolean    @default(false)
+  created_at     DateTime   @default(now())
+  updated_at     DateTime   @updatedAt
 
-
-  @@map("post")
-}
-
-
-//===============
-// LOG
-//===============
-
-model Logs {
-  id       String  @unique   @id @default(uuid())
-  method   String
-  user     User   @relation("logs_user", fields: [user_id], references: [id])
-  user_id    String 
-  table_name String
-  created_at   DateTime     @default(now())
-
-  @@map("logs")
+  @@map("orders")
 }

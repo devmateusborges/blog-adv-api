@@ -1,4 +1,4 @@
-export interface UserDTO {
+export interface SysUserDTO {
   id: string;
   name: string;
   password: string;

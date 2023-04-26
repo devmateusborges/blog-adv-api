@@ -1,14 +1,8 @@
 import { Router } from "express";
-import { groupRoutes } from "./group.routes";
-
-import { postRoutes } from "./post.routes";
-
-import { userRoutes } from "./user.routes";
+import { userRoutes } from "./gpt.routes";
 
 const routes = Router();
 
-routes.use("/users", userRoutes);
-routes.use("/posts", postRoutes);
-routes.use("/groups", groupRoutes);
+routes.use("/chat", userRoutes);
 
 export { routes };
